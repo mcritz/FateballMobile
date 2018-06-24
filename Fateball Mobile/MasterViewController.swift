@@ -12,6 +12,7 @@ import CoreData
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, PredictionControllerDelegate {
     func handle(predictions: [Prediction]) {
         self.predictions = predictions
+        self.tableView.reloadData()
     }
 
     var detailViewController: DetailViewController? = nil
@@ -70,9 +71,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-            let object = fetchedResultsController.object(at: indexPath)
+//            let object = fetchedResultsController.object(at: indexPath)
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+//                controller.detailItem = object
+                let prediction = predictions[indexPath.item]
+                controller.detailItem = prediction
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -82,18 +85,19 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+//        let sectionInfo = fetchedResultsController.sections![section]
+        return predictions.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let event = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withEvent: event)
+//        let event = fetchedResultsController.object(at: indexPath)
+        let predix: Prediction = predictions[indexPath.item]
+        configureCell(cell, with: predix)
         return cell
     }
 
@@ -122,6 +126,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         cell.textLabel!.text = event.timestamp!.description
     }
 
+    func configureCell(_ cell: UITableViewCell, with prediction: Prediction) {
+        cell.textLabel!.text = prediction.description
+    }
+    
     // MARK: - Fetched results controller
 
     var fetchedResultsController: NSFetchedResultsController<Event> {
