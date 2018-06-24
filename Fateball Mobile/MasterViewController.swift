@@ -29,17 +29,18 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
                     print(response.debugDescription)
                     return
             }
-            if let mimeType = httpResponse.mimeType, mimeType == "application/json",
+            if let mimeType = httpResponse.mimeType,
+                mimeType == "application/json",
                 let data = data,
                 let string = String(data: data, encoding: .utf8) {
                     print(string)
-                let decoder = JSONDecoder()
-                self.predictions = try! decoder.decode([Prediction].self, from: data)
-                print(self.predictions)
-                DispatchQueue.main.async {
+                    let decoder = JSONDecoder()
+                    self.predictions = try! decoder.decode([Prediction].self, from: data)
+                    print(self.predictions)
+                    DispatchQueue.main.async {
 //                    self.webView.loadHTMLString(string, baseURL: url)
+                    }
                 }
-            }
         }
         task.resume()
     }
