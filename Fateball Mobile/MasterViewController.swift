@@ -9,48 +9,22 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, PredictionControllerDelegate {
+    func handle(predictions: [Prediction]) {
+        self.predictions = predictions
+    }
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     var predictions = [Prediction]()
-
-    private func startLoad() {
-        let url = URL(string: "http://localhost:8080/predictions")!
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print(error)
-//                self.handleClientError(error)
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else {
-//                    self.handleServerError(response)
-                    print(response.debugDescription)
-                    return
-            }
-            if let mimeType = httpResponse.mimeType,
-                mimeType == "application/json",
-                let data = data,
-                let string = String(data: data, encoding: .utf8) {
-                    print(string)
-                    let decoder = JSONDecoder()
-                    self.predictions = try! decoder.decode([Prediction].self, from: data)
-                    print(self.predictions)
-                    DispatchQueue.main.async {
-//                    self.webView.loadHTMLString(string, baseURL: url)
-                    }
-                }
-        }
-        task.resume()
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.startLoad()
-        
+        do {
+            try PredictionController(delegate: self).startLoad()
+        } catch {
+            print("Did not load predictions")
+        }
         
         navigationItem.leftBarButtonItem = editButtonItem
 

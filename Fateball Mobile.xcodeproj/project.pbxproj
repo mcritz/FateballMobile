@@ -18,6 +18,8 @@
 		0FCA00F620DA0D6200B15D70 /* Fateball_MobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA00F520DA0D6200B15D70 /* Fateball_MobileUITests.swift */; };
 		0FCA010520DB48B300B15D70 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010420DB48B300B15D70 /* Prediction.swift */; };
 		0FCA010620DB48B300B15D70 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010420DB48B300B15D70 /* Prediction.swift */; };
+		0FCA010920DF2DF300B15D70 /* PredictionClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */; };
+		0FCA010A20DF2DF300B15D70 /* PredictionClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 		0FCA00F520DA0D6200B15D70 /* Fateball_MobileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fateball_MobileUITests.swift; sourceTree = "<group>"; };
 		0FCA00F720DA0D6200B15D70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FCA010420DB48B300B15D70 /* Prediction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Prediction.swift; path = ../../../fateball/Sources/App/Models/Prediction.swift; sourceTree = "<group>"; };
+		0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionClientController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		0FCA00CF20DA0D5700B15D70 /* Fateball Mobile */ = {
 			isa = PBXGroup;
 			children = (
+				0FCA010720DF2DB800B15D70 /* Controllers */,
 				0FCA010320DB487400B15D70 /* Models */,
 				0FCA00D020DA0D5700B15D70 /* AppDelegate.swift */,
 				0FCA00D520DA0D5700B15D70 /* MasterViewController.swift */,
@@ -141,6 +145,14 @@
 				0FCA010420DB48B300B15D70 /* Prediction.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0FCA010720DF2DB800B15D70 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCA010920DF2DF300B15D70 /* PredictionClientController.swift in Sources */,
 				0FCA00D420DA0D5700B15D70 /* Fateball_Mobile.xcdatamodeld in Sources */,
 				0FCA00D120DA0D5700B15D70 /* AppDelegate.swift in Sources */,
 				0FCA00D620DA0D5700B15D70 /* MasterViewController.swift in Sources */,
@@ -286,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCA010A20DF2DF300B15D70 /* PredictionClientController.swift in Sources */,
 				0FCA010620DB48B300B15D70 /* Prediction.swift in Sources */,
 				0FCA00EB20DA0D6200B15D70 /* Fateball_MobileTests.swift in Sources */,
 			);
