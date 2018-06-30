@@ -12,7 +12,6 @@ import CoreData
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, PredictionControllerDelegate {
     func handle(predictions: [Prediction]) {
         self.predictions = predictions
-        self.tableView.reloadData()
     }
 
     var detailViewController: DetailViewController? = nil
@@ -26,11 +25,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         } catch {
             print("Did not load predictions")
         }
-        
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+//        navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -38,6 +36,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        do {
+            try PredictionController(delegate: self).startLoad()
+        } catch {
+            print("could not load")
+        }
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1848D320E44F4B00CA52CD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1848D220E44F4B00CA52CD /* NetworkController.swift */; };
+		0F1848D420E44F4B00CA52CD /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1848D220E44F4B00CA52CD /* NetworkController.swift */; };
+		0F1848D620E4761300CA52CD /* NewPredictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1848D520E4761300CA52CD /* NewPredictionViewController.swift */; };
+		0F1848D720E4761300CA52CD /* NewPredictionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1848D520E4761300CA52CD /* NewPredictionViewController.swift */; };
 		0FCA00D120DA0D5700B15D70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA00D020DA0D5700B15D70 /* AppDelegate.swift */; };
 		0FCA00D420DA0D5700B15D70 /* Fateball_Mobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA00D220DA0D5700B15D70 /* Fateball_Mobile.xcdatamodeld */; };
 		0FCA00D620DA0D5700B15D70 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA00D520DA0D5700B15D70 /* MasterViewController.swift */; };
@@ -20,6 +24,7 @@
 		0FCA010620DB48B300B15D70 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010420DB48B300B15D70 /* Prediction.swift */; };
 		0FCA010920DF2DF300B15D70 /* PredictionClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */; };
 		0FCA010A20DF2DF300B15D70 /* PredictionClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */; };
+		0FCA010E20E0AC7900B15D70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FCA00D920DA0D5800B15D70 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F1848D220E44F4B00CA52CD /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		0F1848D520E4761300CA52CD /* NewPredictionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPredictionViewController.swift; sourceTree = "<group>"; };
 		0FCA00CD20DA0D5700B15D70 /* Fateball Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fateball Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCA00D020DA0D5700B15D70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FCA00D320DA0D5700B15D70 /* Fateball_Mobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fateball_Mobile.xcdatamodel; sourceTree = "<group>"; };
@@ -151,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				0FCA010820DF2DF300B15D70 /* PredictionClientController.swift */,
+				0F1848D220E44F4B00CA52CD /* NetworkController.swift */,
+				0F1848D520E4761300CA52CD /* NewPredictionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCA010E20E0AC7900B15D70 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1848D320E44F4B00CA52CD /* NetworkController.swift in Sources */,
 				0FCA010920DF2DF300B15D70 /* PredictionClientController.swift in Sources */,
+				0F1848D620E4761300CA52CD /* NewPredictionViewController.swift in Sources */,
 				0FCA00D420DA0D5700B15D70 /* Fateball_Mobile.xcdatamodeld in Sources */,
 				0FCA00D120DA0D5700B15D70 /* AppDelegate.swift in Sources */,
 				0FCA00D620DA0D5700B15D70 /* MasterViewController.swift in Sources */,
@@ -299,9 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1848D420E44F4B00CA52CD /* NetworkController.swift in Sources */,
 				0FCA010A20DF2DF300B15D70 /* PredictionClientController.swift in Sources */,
 				0FCA010620DB48B300B15D70 /* Prediction.swift in Sources */,
 				0FCA00EB20DA0D6200B15D70 /* Fateball_MobileTests.swift in Sources */,
+				0F1848D720E4761300CA52CD /* NewPredictionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

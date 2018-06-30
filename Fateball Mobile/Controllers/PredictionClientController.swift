@@ -21,6 +21,31 @@ class PredictionController {
     func handleError(error: Error) {
         print(error)
     }
+    func uploadPrediction(data: Data) throws {
+        let maybeUrl = URL(string: "http://localhost:8080/predictions")
+        guard let url: URL = maybeUrl else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let task = URLSession.shared.uploadTask(with: urlRequest, from: data) { data, response, error in
+            if let error = error {
+                print ("error: \(error)")
+                return
+            }
+            guard let response = response as? HTTPURLResponse,
+                (200...299).contains(response.statusCode) else {
+                    print ("server error")
+                    return
+            }
+            if let mimeType = response.mimeType,
+                mimeType == "application/json",
+                let data = data,
+                let dataString = String(data: data, encoding: .utf8) {
+                print ("got data: \(dataString)")
+            }
+        }
+        task.resume()
+    }
     func startLoad() throws {
         let maybeUrl = URL(string: "http://localhost:8080/predictions")
         guard let url: URL = maybeUrl else { return }
