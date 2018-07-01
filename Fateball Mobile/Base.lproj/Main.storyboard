@@ -126,7 +126,6 @@
         <!--New Prediction-->
         <scene sceneID="UXn-jP-Bob">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-DI-lud" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="NewPrediction" title="New Prediction" id="b7h-0H-pGA" customClass="NewPredictionViewController" customModule="Fateball_Mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9X0-PJ-OVD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -158,13 +157,18 @@
                                 <action selector="cancelAction" destination="b7h-0H-pGA" id="FOM-ST-VH7"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gnX-fw-TQ5"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gnX-fw-TQ5">
+                            <connections>
+                                <action selector="doneAction" destination="b7h-0H-pGA" id="qRD-Dp-zfa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="newPredictionDescription" destination="6Vo-cY-rqL" id="kp0-47-sLW"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-DI-lud" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1528.125" y="-635.91549295774644"/>
         </scene>
@@ -183,53 +187,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="0r4-tm-qhR">
-            <objects>
-                <viewController id="IMR-RY-OtK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NHc-lN-Wdx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="DGD-Me-q2b"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Bgd-LJ-jNY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wdy-EL-AHW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="buW-UE-npC">
-            <objects>
-                <viewController id="DW0-XJ-A7g" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vts-w7-a6a">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="XSB-9c-f1C"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="dF7-eu-lQh"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pns-a5-qrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="3DC-OS-SSd">
-            <objects>
-                <tabBarController id="owZ-tj-FIm" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DY5-Sg-0Jd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="DW0-XJ-A7g" kind="relationship" relationship="viewControllers" id="tKa-R5-m9F"/>
-                        <segue destination="IMR-RY-OtK" kind="relationship" relationship="viewControllers" id="d2O-LA-d7W"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D0t-w1-MeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

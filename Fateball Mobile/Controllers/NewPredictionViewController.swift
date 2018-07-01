@@ -21,19 +21,27 @@ class NewPredictionViewController: UIViewController {
                 description: newPredictionDescription.text,
                 status: .draft
             ))
-            try predictionController?.uploadPrediction(data: predictionData)
+            try predictionController?.uploadPrediction(data: predictionData, completionHandler: {
+                DispatchQueue.main.async(execute: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            })
+//            self.navigationController?.popViewController(animated: true)
         } catch {
-            print("failed to upload")
+            print("fa/Users/mcritz/Developer/fateball/Fateball Mobile/Fateball Mobile/Base.lproj/Main.storyboard: “Tab Bar Controller“ is unreachable because it has no entry points, and no identifier for runtime access via -[UIStoryboard instantiateViewControllerWithIdentifier:].iled to upload")
+            let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Error"), message: NSLocalizedString("Could not upload", comment: "Could not upload"), preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .destructive, handler: { action in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                alert.dismiss(animated: true, completion: nil)
+            }))
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        let newPrediction = Prediction(description: newPredictionDescription.text, status: .draft)
-            do {
-                let data = try JSONEncoder().encode(newPrediction)
-                try predictionController?.uploadPrediction(data: data)
-            } catch {
-                print("upload had error")
-            }
+    private func handleSuccess() {
+        DispatchQueue.main.async(execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
     }
 }

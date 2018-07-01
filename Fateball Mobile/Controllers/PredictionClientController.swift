@@ -21,7 +21,7 @@ class PredictionController {
     func handleError(error: Error) {
         print(error)
     }
-    func uploadPrediction(data: Data) throws {
+    func uploadPrediction(data: Data, completionHandler: @escaping () -> Void) throws {
         let maybeUrl = URL(string: "http://localhost:8080/predictions")
         guard let url: URL = maybeUrl else { return }
         var urlRequest = URLRequest(url: url)
@@ -35,13 +35,16 @@ class PredictionController {
             guard let response = response as? HTTPURLResponse,
                 (200...299).contains(response.statusCode) else {
                     print ("server error")
+                    completionHandler()
                     return
             }
             if let mimeType = response.mimeType,
                 mimeType == "application/json",
                 let data = data,
                 let dataString = String(data: data, encoding: .utf8) {
+                completionHandler()
                 print ("got data: \(dataString)")
+                return
             }
         }
         task.resume()

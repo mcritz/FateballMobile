@@ -19,6 +19,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     func handle(predictions: [Prediction]) {
         self.predictions = predictions
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     var predixController: PredictionController? = nil
     var detailViewController: DetailViewController? = nil
@@ -28,12 +31,16 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Inits
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.predixController = PredictionController(delegate: self)
+        if self.predixController == nil {
+            self.predixController = PredictionController(delegate: self)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.predixController = PredictionController(delegate: self)
+        if self.predixController == nil {
+            self.predixController = PredictionController(delegate: self)
+        }
     }
     
     override func viewDidLoad() {
@@ -57,7 +64,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         do {
             try predixController?.startLoad()
         } catch {
-            print("could not load")
+            print("Didnt load or whatever")
         }
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
