@@ -10,18 +10,36 @@ import UIKit
 import CoreData
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, PredictionControllerDelegate {
+    @IBAction func addButtonPressed(_ sender: Any) {
+        let newPredictionCtlr = self.storyboard?.instantiateViewController(withIdentifier: "NewPrediction") as? NewPredictionViewController
+        newPredictionCtlr?.predictionController = self.predixController
+        if let newPredixCtrl = newPredictionCtlr {
+            self.showDetailViewController(newPredixCtrl, sender: sender)
+        }
+    }
     func handle(predictions: [Prediction]) {
         self.predictions = predictions
     }
-
+    var predixController: PredictionController? = nil
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
     var predictions = [Prediction]()
     
+    // MARK: - Inits
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.predixController = PredictionController(delegate: self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.predixController = PredictionController(delegate: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            try PredictionController(delegate: self).startLoad()
+            try predixController?.startLoad()
         } catch {
             print("Did not load predictions")
         }
@@ -37,7 +55,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func viewWillAppear(_ animated: Bool) {
         do {
-            try PredictionController(delegate: self).startLoad()
+            try predixController?.startLoad()
         } catch {
             print("could not load")
         }

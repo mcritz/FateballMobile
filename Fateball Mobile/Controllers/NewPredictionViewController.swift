@@ -8,18 +8,30 @@
 
 import UIKit
 
-class NewPredictionViewController: UIViewController, PredictionControllerDelegate {
+class NewPredictionViewController: UIViewController {
+    var predictionController: PredictionController?
     @IBOutlet weak var newPredictionDescription: UITextView!
+    @IBAction func cancelAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
-    func handle(predictions: [Prediction]) {
-        return
+    @IBAction func doneAction() {
+        do {
+            let predictionData = try JSONEncoder().encode(Prediction(
+                description: newPredictionDescription.text,
+                status: .draft
+            ))
+            try predictionController?.uploadPrediction(data: predictionData)
+        } catch {
+            print("failed to upload")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         let newPrediction = Prediction(description: newPredictionDescription.text, status: .draft)
             do {
                 let data = try JSONEncoder().encode(newPrediction)
-                try PredictionController(delegate: self).uploadPrediction(data: data)
+                try predictionController?.uploadPrediction(data: data)
             } catch {
                 print("upload had error")
             }
